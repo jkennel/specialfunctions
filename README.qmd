@@ -1,0 +1,46 @@
+---
+title: "README"
+format: html
+editor: visual
+---
+
+## Steps
+
+- Get gnstlib files from: https://github.com/guillermo-navas-palencia/gnstlib
+- Copy *.cpp* and *.hpp* files to src. *.hpp* files are placed in an include 
+directory
+- Edit functions requiring quadmath.h.  I couldn't figure out how to get this 
+to compile with clang on mac m1 - right now I just convert to double and replace
+quadmath functions with standard ones. Eventually, I should learn how to do this
+correctly.
+  - expint_n_e_acc
+- Rewrite vectorization functions as needed. Remove omp.h and portions of 
+functions that rely on it.
+  - vectorize_omp
+- Remove unused variables
+  - c, s in fresnels, fresnelsc
+  - shi_sign in shi
+  - mod in chi
+  - a in sici
+  - ans in ei
+  - poly in loggamma_asymptotic
+- update makevars
+
+
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).

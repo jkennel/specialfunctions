@@ -1,0 +1,12 @@
+Package: specialfunctions
+Type: Package
+Title: Efficient implementations of special functions
+Version: 0.0.01
+Date: 2023-02-07
+Author: Jonathan Kennel, GNSTLIB (A. Gil, G. Navas-Palencia, J. Segura and N. M. Temme)
+Maintainer: Jonathan Kennel <jkennel@uoguelph.ca>
+Description: Access to special functions from Rcpp
+License: GPL (>= 2)
+Imports: Rcpp (>= 1.0.10)
+LinkingTo: Rcpp
+RoxygenNote: 7.2.3

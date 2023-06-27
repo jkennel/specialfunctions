@@ -1,0 +1,4 @@
+CXX_STD=CXX17
+PKG_CPPFLAGS= -I/opt/local/include  -I../inst/include
+PKG_LIBS= -L/opt/local/lib
+CXX17STD = -std=gnu++17
