@@ -8,5 +8,5 @@ Maintainer: Jonathan Kennel <jkennel@uoguelph.ca>
 Description: Access to special functions from Rcpp
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.10)
-LinkingTo: Rcpp
+LinkingTo: Rcpp, BH
 RoxygenNote: 7.2.3

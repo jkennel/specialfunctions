@@ -27,5 +27,5 @@ NULL
 
 # Register entry points for exported C++ functions
 methods::setLoadAction(function(ns) {
-    .Call('_specialfunctions_RcppExport_registerCCallable', PACKAGE = 'specialfunctions')
+    .Call(`_specialfunctions_RcppExport_registerCCallable`)
 })

@@ -24,6 +24,69 @@ namespace specialfunctions {
         }
     }
 
+    inline double ei_bh(double u, double a) {
+        typedef SEXP(*Ptr_ei_bh)(SEXP,SEXP);
+        static Ptr_ei_bh p_ei_bh = NULL;
+        if (p_ei_bh == NULL) {
+            validateSignature("double(*ei_bh)(double,double)");
+            p_ei_bh = (Ptr_ei_bh)R_GetCCallable("specialfunctions", "_specialfunctions_ei_bh");
+        }
+        RObject rcpp_result_gen;
+        {
+            RNGScope RCPP_rngScope_gen;
+            rcpp_result_gen = p_ei_bh(Shield<SEXP>(Rcpp::wrap(u)), Shield<SEXP>(Rcpp::wrap(a)));
+        }
+        if (rcpp_result_gen.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (Rcpp::internal::isLongjumpSentinel(rcpp_result_gen))
+            throw Rcpp::LongjumpException(rcpp_result_gen);
+        if (rcpp_result_gen.inherits("try-error"))
+            throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
+        return Rcpp::as<double >(rcpp_result_gen);
+    }
+
+    inline double bessel_k_bh(double x, int nu) {
+        typedef SEXP(*Ptr_bessel_k_bh)(SEXP,SEXP);
+        static Ptr_bessel_k_bh p_bessel_k_bh = NULL;
+        if (p_bessel_k_bh == NULL) {
+            validateSignature("double(*bessel_k_bh)(double,int)");
+            p_bessel_k_bh = (Ptr_bessel_k_bh)R_GetCCallable("specialfunctions", "_specialfunctions_bessel_k_bh");
+        }
+        RObject rcpp_result_gen;
+        {
+            RNGScope RCPP_rngScope_gen;
+            rcpp_result_gen = p_bessel_k_bh(Shield<SEXP>(Rcpp::wrap(x)), Shield<SEXP>(Rcpp::wrap(nu)));
+        }
+        if (rcpp_result_gen.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (Rcpp::internal::isLongjumpSentinel(rcpp_result_gen))
+            throw Rcpp::LongjumpException(rcpp_result_gen);
+        if (rcpp_result_gen.inherits("try-error"))
+            throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
+        return Rcpp::as<double >(rcpp_result_gen);
+    }
+
+    inline double factorial_bh(int x) {
+        typedef SEXP(*Ptr_factorial_bh)(SEXP);
+        static Ptr_factorial_bh p_factorial_bh = NULL;
+        if (p_factorial_bh == NULL) {
+            validateSignature("double(*factorial_bh)(int)");
+            p_factorial_bh = (Ptr_factorial_bh)R_GetCCallable("specialfunctions", "_specialfunctions_factorial_bh");
+        }
+        RObject rcpp_result_gen;
+        {
+            RNGScope RCPP_rngScope_gen;
+            rcpp_result_gen = p_factorial_bh(Shield<SEXP>(Rcpp::wrap(x)));
+        }
+        if (rcpp_result_gen.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (Rcpp::internal::isLongjumpSentinel(rcpp_result_gen))
+            throw Rcpp::LongjumpException(rcpp_result_gen);
+        if (rcpp_result_gen.inherits("try-error"))
+            throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
+        return Rcpp::as<double >(rcpp_result_gen);
+    }
+
     inline Rcpp::NumericVector bessel_k(const Rcpp::NumericVector& x, double nu, bool expon_scaled) {
         typedef SEXP(*Ptr_bessel_k)(SEXP,SEXP,SEXP);
         static Ptr_bessel_k p_bessel_k = NULL;
@@ -276,6 +339,27 @@ namespace specialfunctions {
         return Rcpp::as<std::vector<double> >(rcpp_result_gen);
     }
 
+    inline Rcpp::NumericVector gamma_inc_rcpp(Rcpp::NumericVector u, double a) {
+        typedef SEXP(*Ptr_gamma_inc_rcpp)(SEXP,SEXP);
+        static Ptr_gamma_inc_rcpp p_gamma_inc_rcpp = NULL;
+        if (p_gamma_inc_rcpp == NULL) {
+            validateSignature("Rcpp::NumericVector(*gamma_inc_rcpp)(Rcpp::NumericVector,double)");
+            p_gamma_inc_rcpp = (Ptr_gamma_inc_rcpp)R_GetCCallable("specialfunctions", "_specialfunctions_gamma_inc_rcpp");
+        }
+        RObject rcpp_result_gen;
+        {
+            RNGScope RCPP_rngScope_gen;
+            rcpp_result_gen = p_gamma_inc_rcpp(Shield<SEXP>(Rcpp::wrap(u)), Shield<SEXP>(Rcpp::wrap(a)));
+        }
+        if (rcpp_result_gen.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (Rcpp::internal::isLongjumpSentinel(rcpp_result_gen))
+            throw Rcpp::LongjumpException(rcpp_result_gen);
+        if (rcpp_result_gen.inherits("try-error"))
+            throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
+        return Rcpp::as<Rcpp::NumericVector >(rcpp_result_gen);
+    }
+
     inline std::vector<double> ei_vec(std::vector<double> u) {
         typedef SEXP(*Ptr_ei_vec)(SEXP);
         static Ptr_ei_vec p_ei_vec = NULL;
@@ -295,6 +379,48 @@ namespace specialfunctions {
         if (rcpp_result_gen.inherits("try-error"))
             throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
         return Rcpp::as<std::vector<double> >(rcpp_result_gen);
+    }
+
+    inline double ei_one(double u) {
+        typedef SEXP(*Ptr_ei_one)(SEXP);
+        static Ptr_ei_one p_ei_one = NULL;
+        if (p_ei_one == NULL) {
+            validateSignature("double(*ei_one)(double)");
+            p_ei_one = (Ptr_ei_one)R_GetCCallable("specialfunctions", "_specialfunctions_ei_one");
+        }
+        RObject rcpp_result_gen;
+        {
+            RNGScope RCPP_rngScope_gen;
+            rcpp_result_gen = p_ei_one(Shield<SEXP>(Rcpp::wrap(u)));
+        }
+        if (rcpp_result_gen.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (Rcpp::internal::isLongjumpSentinel(rcpp_result_gen))
+            throw Rcpp::LongjumpException(rcpp_result_gen);
+        if (rcpp_result_gen.inherits("try-error"))
+            throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
+        return Rcpp::as<double >(rcpp_result_gen);
+    }
+
+    inline double factorial_one(double u) {
+        typedef SEXP(*Ptr_factorial_one)(SEXP);
+        static Ptr_factorial_one p_factorial_one = NULL;
+        if (p_factorial_one == NULL) {
+            validateSignature("double(*factorial_one)(double)");
+            p_factorial_one = (Ptr_factorial_one)R_GetCCallable("specialfunctions", "_specialfunctions_factorial_one");
+        }
+        RObject rcpp_result_gen;
+        {
+            RNGScope RCPP_rngScope_gen;
+            rcpp_result_gen = p_factorial_one(Shield<SEXP>(Rcpp::wrap(u)));
+        }
+        if (rcpp_result_gen.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (Rcpp::internal::isLongjumpSentinel(rcpp_result_gen))
+            throw Rcpp::LongjumpException(rcpp_result_gen);
+        if (rcpp_result_gen.inherits("try-error"))
+            throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
+        return Rcpp::as<double >(rcpp_result_gen);
     }
 
 }

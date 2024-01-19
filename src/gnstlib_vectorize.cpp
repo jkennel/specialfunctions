@@ -126,6 +126,44 @@ std::vector<double> gamma_inc_vec(std::vector<double> u, double a)
 }
 
 // [[Rcpp::export]]
+Rcpp::NumericVector gamma_inc_rcpp(Rcpp::NumericVector u, double a)
+{
+  
+  if (a < -1.0)
+  {
+    Rcpp::stop("a must be larger than -1.0");
+  }
+  
+  int err_id = 0;
+  
+  if (a > 0)
+  {
+    double g_gamma = std::tgamma(a);
+    for (auto &out : u)
+    {
+      out = GNSTLIB::gammainc_q(a, out, err_id) * g_gamma;
+    }
+  }
+  else if (a == 0)
+  {
+    for (auto &out : u)
+    {
+      out = GNSTLIB::e1(out, err_id);
+    }
+  }
+  else if (a < 0 && a >= -1)
+  {
+    for (auto &out : u)
+    {
+      out = -1.0 * std::pow(out, a) * exp(-out) / a + gamma_inc_single(out, a + 1.0) / a;
+    }
+  }
+  
+  return (u);
+}
+
+
+// [[Rcpp::export]]
 std::vector<double> ei_vec(std::vector<double> u)
 {
   
@@ -139,6 +177,22 @@ std::vector<double> ei_vec(std::vector<double> u)
   return (u);
 }
 
+// [[Rcpp::export]]
+double ei_one(double u)
+{
+  
+  int err_id = 0;
+  
+  return (GNSTLIB::e1(u, err_id));
+}
+
+// [[Rcpp::export]]
+double factorial_one(double u)
+{
+  int err_id = 0;
+  
+  return (GNSTLIB::factorial(u, err_id));
+}
 
 
 
